@@ -7,12 +7,13 @@ import {forgetPassword} from '../Service/axios';
 
 class ForgotPassword extends Component {
 
-    constructor(props) {
+    constructor(props)  {
         super(props);
 
         this.state = {
             showPassword: "",
-            email: "",
+            userEmail: "",
+            errors: {},
           
         };
     }
@@ -24,7 +25,33 @@ class ForgotPassword extends Component {
         }, () => console.log(this.state, 'Email entered'))
     }
 
-    submitForgetPasswordForm = () => {
+    validateForgotPasswordPage=() => 
+    {
+        let error = {} ;
+        let valid = true ;
+
+        if (!this.state.userEmail)
+        {              
+        if (!this.state.userEmail.match(/^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\. [A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$/)) 
+        {
+            error['email'] = "Your Email id isn't valid..please try again.." ;
+            valid = false ;
+        }
+        }
+
+        this.setState({
+            errors: error
+          });
+          return valid;
+
+
+
+    }
+
+    submitForgetPasswordForm = () => 
+    {
+        if( this.validateForgotPasswordPage() )
+        {
        
             let userObject = {};
             userObject.email = this.state.email;
@@ -40,6 +67,8 @@ class ForgotPassword extends Component {
                     console.log(Error, " fail");
                     alert(`Please Try Again !!`);
                 });
+
+        }
         
     }
 
@@ -73,6 +102,8 @@ class ForgotPassword extends Component {
                         variant="outlined"
                         name="email"
                         onChange={this.handleChangeText}
+                        error={this.state.errors.email}
+                        helperText={this.state.errors.email}
                        
                     />
                 </div>

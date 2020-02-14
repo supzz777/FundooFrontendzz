@@ -34,13 +34,16 @@ class Registration extends Component {
     }
 
     submitUserSignUpForm = () => {
-        // if (this.validateForm()) {
+         if ( this.validatingRegistartionForm() )  {
+            
             let user = {};
+
             user.firstName = this.state.firstName;
             user.lastName = this.state.lastName;
             user.email = this.state.email;
             user.phoneNumber = this.state.phoneNumber;
             user.password = this.state.password;
+            user.confirmPassword = this.state.confirmPassword ;
             console.log(user);
 
             registerUser(user)
@@ -49,14 +52,72 @@ class Registration extends Component {
                    
                     alert(`${Response.data.message}`);
                   
-                    // this.props.history.push("/");
+                    
                 }).catch((Error) => {
                     console.log("Error", Error.response)
                      console.log(Error.response.message, "User Registration failed");
                     alert(Error);
                 });
+            }
         }
 
+        validatingRegistartionForm = () => {
+
+            let fields = this.state.fields;
+            let error = {} ;
+            let valid = true ;
+            if (!this.state.firstName)
+             {
+                error['firstName'] = 'Enter your first name' ;
+                valid = false ;
+            }
+            if (!this.state.lastName)
+             {
+                error['lastName'] = 'Please enter your last name' ;
+                valid = false ;
+            }
+
+            if (!this.state.email)
+            {              
+            if (!this.state.email.match(/^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\. [A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$/)) 
+            {
+                error['email'] = "Your Email id isn't valid..please try again.." ;
+                valid = false ;
+            }
+            }
+            
+            if(!this.state.phoneNumber)
+            {
+            if (!this.state.phoneNumber.match(/^[0-9]{10}$/)) {
+                valid = false;
+                error["phoneNumber"] = "Please enter valid mobile no.";
+            }
+            }
+                    
+            
+            if(!this.state.password)
+            {
+            if (!this.state.password.match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)) 
+            {
+                valid = false;
+                error["password"] = "Please enter password properly.";
+            }
+            }   
+            
+            if(!this.state.confirmPassword)
+            {
+            if (!this.state.confirmPassword.match(this.state.password)) 
+            {                
+            valid = false;
+            error["confirmPassword"] ="This feild cannot be empty..Please enter your password again ";
+            }
+            }
+            
+            this.setState({
+                errors: error
+              });
+              return valid;
+        }
 
 
 
@@ -87,10 +148,12 @@ class Registration extends Component {
                                 id="outlined"
                                 label="First Name"
                                 variant="standard"
-                                style={{ width: "44%" }}
+                                style={ {marginLeft:"-2%",width: "40%" }}
                                 onChange={this.handleChangeText}
+                                error={this.state.errors.firstName}
+                                helperText={this.state.errors.firstName}></TextField>
                                 
-                            />
+                            
 
                             <TextField
                                 margin="dense"
@@ -99,9 +162,11 @@ class Registration extends Component {
                                 id="outlined"
                                 label="Last Name"
                                 variant="standard"
-                                style={{ width: "44%" }}
+                                style={{ marginLeft:"3%", width: "41%" }}
                                 onChange={this.handleChangeText}
-                            />
+                                error={this.state.errors.lastName}
+                                helperText={this.state.errors.lastName}></TextField>
+                            
 
                         </div>
 
@@ -114,6 +179,8 @@ class Registration extends Component {
                                 label="Email"
                                 variant="standard"
                                 onChange={this.handleChangeText}
+                                error={this.state.errors.email}
+                                helperText={this.state.errors.email}
                                
                             />
 
@@ -128,6 +195,8 @@ class Registration extends Component {
                                 label="Phone Number"
                                 variant="standard"
                                 onChange={this.handleChangeText}
+                                error={this.state.errors.phoneNumber}
+                                helperText={this.state.errors.phoneNumber}
                                
                             />
                         </div>
@@ -156,6 +225,9 @@ class Registration extends Component {
                                         </InputAdornment>
                                     )
                                 }}
+                                error={this.state.errors.password}
+                                helperText={this.state.errors.password}
+                               
 
                             />
                         </div>
@@ -187,6 +259,8 @@ class Registration extends Component {
                                         </InputAdornment>
                                     )
                                 }}
+                                error={this.state.errors.confirmPassword}
+                                helperText={this.state.errors.confirmPassword}
                             />
                             
                         </div>
@@ -197,8 +271,8 @@ class Registration extends Component {
                                 size="medium"
                                 variant="contained"
                                 color="primary"
-                                //onClick={this.handelRegister}
                                 onClick={this.submitUserSignUpForm}
+                               
                             >
                                 Submit
                             </Button>
@@ -208,7 +282,8 @@ class Registration extends Component {
                                 size="medium"
                                  variant="contained"
                                  color="primary"
-                                onClick={() => this.props.history.push('/')}>
+                                onClick={() => this.props.history.push('/')}
+                            >
                                 Already Registered?
                             </Button>
                         </div>

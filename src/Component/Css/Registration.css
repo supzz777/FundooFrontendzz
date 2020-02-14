@@ -16,7 +16,7 @@
     font-size: 220%;
     padding-bottom: 2%;
     display: flex;
-    position: relative;
+    position: static;
     justify-content: center;
     top: 3%;
 }   
@@ -38,6 +38,7 @@
     padding-bottom: 1%;
     top: -5%;
     position: relative;
+    
 }
 .emailId{
     display: flex;

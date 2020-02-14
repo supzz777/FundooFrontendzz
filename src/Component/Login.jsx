@@ -16,12 +16,11 @@ export default class Login extends Component {
         super(props);
 
         this.state = {
-            showPassword: false,
-            userName: "",
+            showPassword: "",
             userPassword: "",
-            email: "",
-            password: "",
+            userEmail: "",          
             isValid: true,
+            errors: {},
            
         };
 
@@ -35,6 +34,8 @@ export default class Login extends Component {
 
     submitLoginForm = () => {
       
+        if( this.validateLoginForm() )
+        {
             let userObject = {};
             userObject.email = this.state.email;
             userObject.password = this.state.password;
@@ -50,9 +51,40 @@ export default class Login extends Component {
                     console.log(Response, "user login fail");
                     alert(`Login Failed`);
                 });
-        
-    }
+            }
+    } 
 
+    validateLoginForm = () =>
+    {
+
+        let error = {} ;
+        let valid = true ;
+
+        if (!this.state.userEmail)
+        {              
+        if (!this.state.userEmail.match(/^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\. [A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$/)) 
+        {
+            error['email'] = "Your Email id isn't valid..please try again.." ;
+            valid = false ;
+        }
+        }
+
+         
+        if(!this.state.userPassword)
+        {
+        if (!this.state.userPassword.match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)) 
+        {
+            valid = false;
+            error["password"] = "Please enter password properly..Also dont leave it blank";
+        }
+        }   
+        
+        this.setState({
+            errors: error
+          });
+          return valid;
+
+    }
 
     render() {
         return (
@@ -71,17 +103,20 @@ export default class Login extends Component {
                 </div>
 
 
-                <div className="usernameText">
+                <div className="userEmail">
 
                     <TextField
                         margin="dense"
                         size="small"
                         name="email"
                         id="outlined-full-width"
-                        label="userName"
+                        label="userEmail"
                         variant="outlined"
+                        onChange={this.handleChangeText}
+                        error={this.state.errors.email}
+                        helperText={this.state.errors.email}></TextField>
 
-                    />
+                    
                 </div>
 
                
@@ -113,7 +148,9 @@ export default class Login extends Component {
                                 </InputAdornment>
                             )
                         }}
-                    />
+                        error={this.state.errors.password}
+                        helperText={this.state.errors.password}></TextField>
+                    
 
                 </div>
 

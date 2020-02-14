@@ -16,7 +16,8 @@ class ResetPassword extends Component {
         this.state = {
             showPassword: false,
             password: "",
-            confirmpassword: "",
+            confirmPassword: "",
+            errors: {},
                        
         };
        
@@ -28,8 +29,41 @@ class ResetPassword extends Component {
         }, () => console.log(this.state, 'data changed'))
     }
 
+    validateResetPassword=() =>
+    {
+        let error = {} ;
+        let valid = true ;
+
+        if(!this.state.password)
+        {
+        if (!this.state.password.match(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/)) 
+        {
+            valid = false;
+            error["password"] = "Please enter password properly..Also dont leave it blank";
+        }
+        }   
+
+        if(!this.state.confirmPassword)
+        {
+              if( !this.state.confirmPassword.match(this.state.password) )
+              {             
+                valid = false;
+                error["confirmPassword"] = "Password didn't matched.." ;
+
+              }
+        }
+        
+        this.setState({
+            errors: error
+          });
+          return valid;
+
+    }
+
     submitResetPasswordForm = () => {
      
+        if( this.validateResetPassword() )
+        {
             let userObject= {};
             userObject.email = this.state.email;
             userObject.password = this.state.password ;
@@ -46,7 +80,8 @@ class ResetPassword extends Component {
                     console.log(Error, " fail");
                     alert(`Password didn't matched .. please try again.!!`);
                 });
-        
+        }
+
     }
 
 
@@ -94,6 +129,9 @@ class ResetPassword extends Component {
                                 </InputAdornment>
                             )
                         }}
+
+                        error={this.state.errors.password}
+                        helperText={this.state.errors.password}
                     />
                 </div>
 
@@ -107,8 +145,7 @@ class ResetPassword extends Component {
                         id="outlined-adornment-password"
                         variant="outlined"
                         type={this.state.showPassword ? "text" : "password"}
-                        label=" confirm "
-                        value={this.state.confirmPassword}
+                        label=" confirm "                               
                         onChange={this.handleChangeText}
 
                          InputProps={{
@@ -125,7 +162,8 @@ class ResetPassword extends Component {
                                 </InputAdornment>
                             )
                         }}
-                       
+                        error={this.state.errors.confirmPassword}
+                        helperText={this.state.errors.confirmPassword}
                        
                     />
                 </div>

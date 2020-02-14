@@ -14,7 +14,7 @@ const Router =() => {
             <Route  path='/' exact  component={Login} />
             <Route  path='/register'  component={Registration}/>
             <Route  path='/forgotpassword'  component={ForgotPassword}/>
-            <Route  path='/resetpassword'  component={ResetPassword}/>
+            <Route  path='/resetpassword'  component={ResetPassword}/> 
 
                 
             </BrowserRouter>

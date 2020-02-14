@@ -1,0 +1,133 @@
+.userRegistration{
+    margin-top: 2%;
+    padding: 0%;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22);
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    border-radius: 30px;
+    width: 70%;
+    height: 600px;
+    margin-left: 15%;
+}
+
+.fundooLogoz{
+    
+    font-size: 220%;
+    padding-bottom: 2%;
+    display: flex;
+    position: relative;
+    justify-content: center;
+    top: 3%;
+}   
+    
+.signUpTag{
+    color: #201a79;
+    font-size: 157%;
+    position: relative;
+    display: flex;
+    width: 100%;
+    top: -6%;
+    justify-content: center;
+}
+.userNameDetails {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    width: 100%;
+    padding-bottom: 1%;
+    top: -5%;
+    position: relative;
+}
+.emailId{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 95%;
+    margin-left: 3%;
+    padding-bottom: 1%;
+    position: relative;
+    top: -8%;
+}
+.phoneNumber{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    width: 97%;
+    margin-left: 3%;
+    /* padding-bottom: 1%; */
+    position: relative;
+    top: -10%;
+
+
+}
+.userPassword{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin-left: 3%;
+    position: relative;
+    top: -11%;
+    width: 94%;
+   
+ }
+ .userConfirmPassword{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    margin-left: 3%;
+    position: relative;
+    top: -11%;
+    width: 213%;
+
+ }
+ .userbutton{
+    display: flex;
+    justify-content: space-between;
+    padding: 3%;
+    position: relative;
+    top: -3%;
+}
+
+.main{
+    display: flex;    
+    flex-direction: row;
+    justify-content: space-between;
+}
+.image{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    justify-content: start;
+
+
+}
+.passwordvalid{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+   
+}
+
+.line{
+    display: flex;
+    position: relative;
+    margin-right: 23%;
+    top: -9%;
+}
+
+@media only screen and (max-width: 320px) {
+    .img1{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        position: relative;
+        top: -15%;
+   
+    }
+    .line{
+        display: flex;
+        position: relative;
+        top: -18%;
+    }
+  }

@@ -1,0 +1,63 @@
+.loginPage{
+    
+    width: 44%;
+    height: 460px;
+    box-shadow: 0px 0px 20px 20px rgba(0,0,0,0.30), 0 15px 12px rgba(0,0,0,0.22); 
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+     margin-top: 4%;
+    margin-left: 25%;
+    padding: 2%;
+}
+
+.FundooLogo{
+    position: relative;
+    top: -6%;
+    /* margin-top: 0%; */
+    font-size: 250%;
+    text-align: center;
+}
+
+.signInLogo{
+    position: relative;
+    color: blueviolet;
+    font-size: 150%;
+    top: -8%;
+    /* margin-top: -55%; */
+    text-align: center;
+    padding-bottom: 2%;
+ 
+}
+
+.usernameText{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    width:100%;
+    margin-top: -4%;
+    
+}
+
+.passwordText{
+    margin-top: 8px;
+    margin-bottom: 4px;
+     width: 100%;
+
+}
+.ButtonsLoginRegister{
+    
+    padding-top: 4%;
+    display: flex;  
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.Forgotpassword{
+    display: flex;
+    justify-content: center;
+    color: #9e2059;
+   
+}
+

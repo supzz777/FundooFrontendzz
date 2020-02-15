@@ -4,6 +4,7 @@ import Login from  '../Component/Login';
 import ResetPassword from '../Component/ResetPassword';
 import ForgotPassword from '../Component/ForgotPassword';
 import Registration from '../Component/Registration';
+import Dashboard from '../Component/Dashboard';
 
 const Router =() => {
     
@@ -15,10 +16,18 @@ const Router =() => {
             <Route  path='/register'  component={Registration}/>
             <Route  path='/forgotpassword'  component={ForgotPassword}/>
             <Route  path='/resetpassword'  component={ResetPassword}/>
-
+            <Route  path='/dashboard'  component={Dashboard}/>
                 
             </BrowserRouter>
         );
+
+
+
+
+
+
+
+
     
 };
 

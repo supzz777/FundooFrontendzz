@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import Router from './Router/Router'
 
+
 function App() {
   return (
    
@@ -12,7 +13,7 @@ function App() {
   
       <Router />
       
-      
+   
         {/* <Login /> */}
         {/* <Registration/> */}
         {/* <ForgotPassword/> */}

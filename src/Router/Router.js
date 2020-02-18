@@ -5,6 +5,7 @@ import ResetPassword from '../Component/ResetPassword';
 import ForgotPassword from '../Component/ForgotPassword';
 import Registration from '../Component/Registration';
 import Dashboard from '../Component/Dashboard';
+import PersistantDrawer from '../Component/PersistantDrawer'
 
 const Router =() => {
     
@@ -17,7 +18,9 @@ const Router =() => {
             <Route  path='/forgotpassword'  component={ForgotPassword}/>
             <Route  path='/resetpassword'  component={ResetPassword}/>
             <Route  path='/dashboard'  component={Dashboard}/>
-                
+            <Route path='/drawer' component={PersistantDrawer}/>
+
+            
             </BrowserRouter>
         );
 

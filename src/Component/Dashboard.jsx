@@ -11,7 +11,6 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import AppsIcon from '@material-ui/icons/Apps';
 import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField  from '@material-ui/core/TextField';
-
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 
 
@@ -114,7 +113,7 @@ class Dashboard extends Component {
                     </div>
 
                     <div className= "accountPic">
-                        <AccountCircleIcon/>
+                        <AccountCircleIcon fontSize="large"/>
                     </div>
 
                 </div>

@@ -1,29 +1,32 @@
-import {toggleView,drawer} from "../Redux/ActionType.js"
+import {
+  toggleView,
+  drawer,
+  TOGGLE_DRAWER
+} from "../Redux/ActionType.js"
 
-export const initialState={
-    openDrawer=false,
-    display:true,
+const initialState = {
+  openDrawer: false,
+  display: true,
 };
 
-const reducer = (State = initialState, action) => {
-    switch (action.type) {
+const reducer = (state = initialState, action) => {
+  switch (action.type) {
 
-        case DRAWER: {
-            return {
-              ...State,
-              openDrawer: !State.openDrawer
-            };
-          }
-      
-       
-          case TOGGLE_VIEW: {
-            return {
-              ...State,
-              view: !State.view
-            };
-          }
-      
-
-
+    case TOGGLE_DRAWER: {
+      return {
+        ...state,
+        openDrawer: !state.openDrawer
+      };
     }
+
+    // case TOGGLE_VIEW: {
+    //   return {
+    //     ...state, //spread operator(copying) = ...
+    //     view: !state.view
+    //   };
+    // }
+
+  }
 };
+
+export default reducer;

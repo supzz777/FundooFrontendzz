@@ -20,7 +20,6 @@ const Router =() => {
             <Route  path='/dashboard'  component={Dashboard}/>
             <Route path='/drawer' component={PersistantDrawer}/>
 
-            
             </BrowserRouter>
         );
 

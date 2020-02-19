@@ -11,7 +11,8 @@ import {registerUser} from "../Service/axios"
 
 class Registration extends Component {
 
-    constructor(props) {
+    constructor(props)
+     {
         super(props);
 
         this.state = {
@@ -33,8 +34,136 @@ class Registration extends Component {
         })
     }
 
-    submitUserSignUpForm = () => {
-        // if (this.validateForm()) {
+    // validateForm = () =>
+    // {
+    //   let error = {};
+    //   let formIsValid = true;
+
+    //   if (!this.state.firstName) 
+    //   {
+    //     formIsValid = false;
+    //     error["firstName"] = "*Please enter your FirstName.";
+    //   }
+
+    //   if (!this.state.lastName) 
+    //   {
+    //     formIsValid = false;
+    //     error["lastName"] = "*Please enter your LastName.";
+    //   }
+
+     
+    // //   if ( this.state.email !== "undefined" || !this.state.email )
+    // // {
+    // //     //regular expression for email validation
+    // //     var pattern = new RegExp("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\. [A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+    // //     if (!pattern.test(this.state.email)) 
+    // //     {
+    // //       formIsValid = false;
+    // //       error["email"] = "*Please enter a valid email-ID.";
+    // //     }
+    // // }
+    // if (!RegExp("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\. [A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$").test(this.state.email)) {
+    //     error['email'] = '*Enter valid Email id'
+    // }
+   
+    // if (!this.state.email) {
+    //     error['email'] = '*Enter the Email Id'
+    //     formIsValid = false
+    // }
+    //   if (this.state.phoneNumber !== "undefined"  ||  !this.state.phoneNumber )
+    // {
+    //     var pattern = new RegExp(/^[0-9]{10}$/);
+    //     if (!pattern.test(this.state.phoneNumber))
+    //     {
+    //       formIsValid = false;
+    //       error["phoneNumber"] = "*Please enter valid mobile no.";
+    //     }
+
+    // }
+
+   
+
+    //   if (this.state.password !== "undefined" || !this.state.password )
+    // {
+
+    //     var pattern = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+
+    //     if (!pattern.test(this.state.password)) 
+    //     {
+    //       formIsValid = false;
+    //       error["password"] = "*Please enter secure and strong password.";
+    //     }
+    // }
+
+    // if(this.state.confirmPassword != this.state.password)
+    // {
+    //     formIsValid = false;
+    //     error["confirmPassword"] ="Your passwords arent matching please try again..."
+    // }
+
+    //   this.setState({
+    //     error: error
+    //   });
+    //   return formIsValid;
+
+    // }
+
+
+    validateForm = () =>
+     {
+        let errors = {}
+
+        let formIsValid = true
+
+        if (!this.state.firstName) {
+            errors['firstName'] = '*Enter the First Name'
+            formIsValid = false
+        }
+        if (!this.state.lastName) {
+            errors['lastName'] = '*Enter the Last Name'
+            formIsValid = false
+        }
+        // if (!RegExp("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\. [A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$").test(this.state.email)) {
+        //     errors['email'] = '*Enter valid Email id'
+        // }
+        // if (!this.state.email) {
+        //     errors['email'] = '*Enter the Email Id'
+        //     formIsValid = false
+        // }
+        if (!RegExp("(0/91)?[7-9][0-9]{9}").test(this.state.phoneNumber)) {
+            errors['phoneNumber'] = '*Enter valid Phone Number'
+        }
+        if (!this.state.phoneNumber) {
+            errors['phoneNumber'] = '*Enter your Phone Number'
+            formIsValid = false
+        }
+        if (!RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})").test(this.state.password)) {
+            errors['password'] = '*Enter the valid password'
+            formIsValid = false
+        }
+        if (!this.state.password) {
+            errors['password'] = '*Enter the password'
+            formIsValid = false
+        }
+        if (!this.state.confirmPassword) {
+            errors['confirmPassword'] = '*Enter the confirm password'
+            formIsValid = false
+        }
+        if (this.state.password !== this.state.confirmPassword) {
+            errors['confirmPassword'] = '*Password does\'t match'
+            formIsValid = false
+        }
+
+        this.setState({
+            errors: errors
+        })
+        return formIsValid
+    }
+
+
+    submitUserSignUpForm = () => 
+    {
+         if (this.validateForm()) {
             let user = {};
             user.firstName = this.state.firstName;
             user.lastName = this.state.lastName;
@@ -44,18 +173,20 @@ class Registration extends Component {
             console.log(user);
 
             registerUser(user)
-                .then(Response => {
-                    console.log(Response, "User Registered successfully!!");
-                   
-                    alert(`${Response.data.message}`);
-                  
-                    // this.props.history.push("/");
-                }).catch((Error) => {
-                    console.log("Error", Error.response)
-                     console.log(Error.response.message, "User Registration failed");
-                    alert(Error);
-                });
-        }
+            .then(Response => {
+                console.log(Response, "User Registered successfully!!");
+                alert(`this 1 ${Response.data.message}`);
+                this.props.history.push("/");
+            }).catch((err) => {
+                console.log("Error", err.response)
+                console.log(err.response.data.message, "User Registration failed");
+                alert(err.response.data.message);
+                console.log('errro msg : ',err.response.data);
+                
+            });
+            }
+
+    }
 
 
 
@@ -89,7 +220,11 @@ class Registration extends Component {
                                 variant="standard"
                                 style={{ width: "44%" }}
                                 onChange={this.handleChangeText}
-                                
+                                error={this.state.errors.firstName}
+                                helperText={this.state.errors.firstName}
+
+
+    
                             />
 
                             <TextField
@@ -101,6 +236,8 @@ class Registration extends Component {
                                 variant="standard"
                                 style={{ width: "44%" }}
                                 onChange={this.handleChangeText}
+                                error={this.state.errors.lastName}
+                                helperText={this.state.errors.lastName}
                             />
 
                         </div>
@@ -114,8 +251,12 @@ class Registration extends Component {
                                 label="Email"
                                 variant="standard"
                                 onChange={this.handleChangeText}
+                                error={this.state.errors.email}
+                                helperText={this.state.errors.email}
                                
                             />
+
+                           
 
                         </div>
                         <div className="phoneNumber">
@@ -128,7 +269,8 @@ class Registration extends Component {
                                 label="Phone Number"
                                 variant="standard"
                                 onChange={this.handleChangeText}
-                               
+                                error={this.state.errors.phoneNumber}
+                                helperText={this.state.errors.phoneNumber}
                             />
                         </div>
 
@@ -157,6 +299,10 @@ class Registration extends Component {
                                     )
                                 }}
 
+                                error={this.state.errors.password}
+                                helperText={this.state.errors.password}
+                           
+
                             />
                         </div>
 
@@ -170,10 +316,10 @@ class Registration extends Component {
                                 variant="standard"
                                 type={this.state.showPassword ? "text" : "password"}
                                 label=" Confirm Password "
-                                value={this.state.confirmPassword}
                                 onChange={this.handleChangeText}
                                 style={{ width: "44%" }}
-                                InputProps={{
+
+                                   InputProps={{
                                     endAdornment: (
                                         <InputAdornment position="end" sytle={{ width: "1px" }}>
                                             <IconButton
@@ -187,6 +333,9 @@ class Registration extends Component {
                                         </InputAdornment>
                                     )
                                 }}
+
+                                error={this.state.errors.confirmPassword}
+                                helperText={this.state.errors.confirmPassword}
                             />
                             
                         </div>
@@ -197,7 +346,7 @@ class Registration extends Component {
                                 size="medium"
                                 variant="contained"
                                 color="primary"
-                                //onClick={this.handelRegister}
+                                onChange={this.handleChangeText}
                                 onClick={this.submitUserSignUpForm}
                             >
                                 Submit

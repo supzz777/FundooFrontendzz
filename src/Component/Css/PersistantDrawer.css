@@ -19,6 +19,7 @@
 
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    border-radius: 20px;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     background: #5c9091;
 
@@ -28,6 +29,7 @@
 
     -webkit-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
+    border-radius: 20px;
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     background: #5c9091;
 
@@ -40,6 +42,7 @@
     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     background: #5c9091;
+    border-radius: 20px;
 
 }
 
@@ -50,6 +53,8 @@
     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     background: #5c9091;
+    border-radius: 20px;
+
 }
 
 .archive:hover,
@@ -59,6 +64,8 @@
     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     background: #5c9091;
+    border-radius: 20px;
+
 }
 
 .trash:hover,
@@ -68,6 +75,8 @@
     -moz-box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     background: #5c9091;
+    border-radius: 20px;
+
 
 }
 

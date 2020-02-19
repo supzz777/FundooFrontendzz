@@ -18,7 +18,7 @@
     display: flex;
     position: relative;
     justify-content: center;
-    top: 3%;
+    top: 1%;
 }   
     
 .signUpTag{
@@ -27,7 +27,7 @@
     position: relative;
     display: flex;
     width: 100%;
-    top: -6%;
+    top: -5%;
     justify-content: center;
 }
 .userNameDetails {

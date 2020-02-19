@@ -22,6 +22,7 @@ export default class Login extends Component {
             email: "",
             password: "",
             isValid: true,
+            error:{},
            
         };
 
@@ -33,24 +34,60 @@ export default class Login extends Component {
         }, () => console.log(this.state, 'data changed'))
     }
 
+    validateLoginForm=() => {
+        let error = {};
+        let formIsValid = true;
+
+
+        if ( this.state.email !== "undefined" || !this.state.email )
+    {
+        //regular expression for email validation
+        var pattern = new RegExp("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\. [A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
+        if (!pattern.test(this.state.email)) 
+        {
+          formIsValid = false;
+          error["email"] = "*Please enter a valid email-ID.";
+        }
+    }
+
+      if (!this.state.password) 
+      {
+        formIsValid = false;
+        error["password"] = "*Please enter your password.";
+      }
+
+      this.setState({
+        error: error
+      });
+      return formIsValid;
+
+    }
+
+
+
+    
+
     submitLoginForm = () => {
+        if (this.validateLoginForm()) {
       
             let userObject = {};
             userObject.email = this.state.email;
             userObject.password = this.state.password;
+            // let Token= localStorage.setItem("Token" ,Response.data.data);
             login(userObject)
                 .then(Response => {
-
-                    
                     console.log(Response , "Login success")
                     alert(`Login Successfull!!`);
+                    localStorage.setItem("Token" ,Response.data.data);
+                    this.props.history.push('/dashboard');
+                    
 
                 })
                 .catch(Error => {
                     console.log(Response, "user login fail");
                     alert(`Login Failed`);
                 });
-        
+            }
     }
 
 
@@ -78,9 +115,11 @@ export default class Login extends Component {
                         size="small"
                         name="email"
                         id="outlined-full-width"
-                        label="userName"
+                        label="userEmail"
                         variant="outlined"
-
+                        onChange={this.handleChangeText}
+                        error={this.state.error.email}
+                        helperText={this.state.error.email}
                     />
                 </div>
 
@@ -113,6 +152,9 @@ export default class Login extends Component {
                                 </InputAdornment>
                             )
                         }}
+                        error={this.state.error.password}
+                        helperText={this.state.error.password}
+
                     />
 
                 </div>

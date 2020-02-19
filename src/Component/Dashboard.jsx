@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./Css/Dashboard.css" ;
+import "./Css/Dashboard.css";
 import MenuIcon from '@material-ui/icons/Menu';
 import googleKeepLogo from '../Image/googleKeepLogo.png'
 import Typography from '@material-ui/core/Typography';
@@ -10,8 +10,9 @@ import ViewStreamIcon from '@material-ui/icons/ViewStream';
 import SettingsIcon from '@material-ui/icons/Settings';
 import AppsIcon from '@material-ui/icons/Apps';
 import InputAdornment from "@material-ui/core/InputAdornment";
-import TextField  from '@material-ui/core/TextField';
+import TextField from '@material-ui/core/TextField';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
+import DrawerMenu from './DrawerMenu';
 
 
 class Dashboard extends Component {
@@ -24,44 +25,44 @@ class Dashboard extends Component {
     };
 
 
-      handleChangeText = (event) => {
+    handleChangeText = (event) => {
         this.setState({
             [event.target.name]: event.target.value
         })
     }
 
 
-    render() 
-    {
-        return(
-            <div className = "dashBoardPage">
+    render() {
+        return (
+            <div className="dashBoardPage">
 
-                <div className = "navBar">
+                <div className="navBar">
 
-                   
-                    <div className ="menu">
+
+                    {/* <div className ="menu">
                     
                       <MenuIcon/>
 
+                    </div> */}
+                    <DrawerMenu />
+
+                    <div className="googleKeepImage">
+
+                        <img src={googleKeepLogo} alt="keepLogo" />
+
                     </div>
 
-                    <div className ="googleKeepImage">
+                    <Typography className="keep">
 
-                        <img src = {googleKeepLogo} alt = "keepLogo"/>
-
-                    </div>
-
-                    <Typography className = "keep">
-                        
-                       <span style={{color:"#010815" }}> Keep </span>
+                        <span style={{ color: "#010815" }}> Keep </span>
 
                     </Typography>
-                    
-                    <div className= "searchBarPlace">
+
+                    <div className="searchBarPlace">
                         {/* <div className= "searchIcon">
                         <SearchIcon />
                         </div> */}
-                        
+
                         {/* <InputBase type="text" id="filter" 
                         placeholder="Search..." 
                         onChange={this.handleInputChange}
@@ -80,50 +81,50 @@ class Dashboard extends Component {
                          
                          </form> */}
 
-                         {/* <Icon style={styles.searchIcon} name="ios-search" size={20} color="#000"/> */}
+                        {/* <Icon style={styles.searchIcon} name="ios-search" size={20} color="#000"/> */}
 
-                         
-                         <SearchIcon style={{padding:1}}/>
-                         
+
+                        <SearchIcon style={{ padding: 1 }} />
+
                         <TextField
                             placeholder="search"
-                            onChangeText={(searchString) => {this.setState({searchString})}}
+                            onChangeText={(searchString) => { this.setState({ searchString }) }}
                             underlineColorAndroid="transparent"
-                            InputProps= {{disableUnderline:true}}
+                            InputProps={{ disableUnderline: true }}
                         />
-                        
-                       
+
+
                     </div>
 
-                    <div className = "refresh">
-                        <RefreshIcon/>
+                    <div className="refresh">
+                        <RefreshIcon />
                     </div>
 
-                    <div className= "viewList">
+                    <div className="viewList">
 
-                        <ViewStreamIcon/>
+                        <ViewStreamIcon />
                     </div>
 
-                    <div className= "settingsIcon">
-                        <SettingsIcon/>
+                    <div className="settingsIcon">
+                        <SettingsIcon />
                     </div>
 
-                    <div className= "appsIcon">
-                        <AppsIcon/>
+                    <div className="appsIcon">
+                        <AppsIcon />
                     </div>
 
-                    <div className= "accountPic">
-                        <AccountCircleIcon fontSize="large"/>
+                    <div className="accountPic">
+                        <AccountCircleIcon fontSize="large" />
                     </div>
 
                 </div>
 
 
-                
+
             </div>
         );
     }
-    
+
 }
 
 export default Dashboard;

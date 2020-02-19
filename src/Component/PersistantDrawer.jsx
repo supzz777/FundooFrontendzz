@@ -16,10 +16,14 @@ import LabelOutlinedIcon from '@material-ui/icons/LabelOutlined';
 import EditOutlinedIcon from '@material-ui/icons/EditOutlined';
 import ArchiveOutlinedIcon from '@material-ui/icons/ArchiveOutlined';
 import DeleteOutlineSharpIcon from '@material-ui/icons/DeleteOutlineSharp';
+import MenuIcon from '@material-ui/icons/Menu';
+import { blue } from "@material-ui/core/colors";
+
 
 
 const styles = {
-  list: {
+  list:
+  {
     width: 250
   },
  
@@ -86,7 +90,7 @@ class TemporaryDrawer extends React.Component {
         </div>             
         </List>
 
-        <Divider />
+        <Divider style={{color:blue}} />
 
         <List>
                      <div className="archive">    
@@ -115,7 +119,9 @@ class TemporaryDrawer extends React.Component {
     console.log(this.state.left);
     return (
       <div>
-        <Button onClick={this.toggleDrawer("left", true)}>Open Left</Button>
+        <Button
+        style={{marginLeft:"-90%"}}
+         onClick={this.toggleDrawer("left", true)}><MenuIcon /></Button>
         <Drawer
           open={this.state.left}
           onClose={this.toggleDrawer("left", false)}

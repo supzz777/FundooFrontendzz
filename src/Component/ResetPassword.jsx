@@ -16,7 +16,8 @@ class ResetPassword extends Component {
         this.state = {
             showPassword: false,
             password: "",
-            confirmpassword: "",
+            confirmPassword: "",
+            error:{},
                        
         };
        
@@ -28,7 +29,43 @@ class ResetPassword extends Component {
         }, () => console.log(this.state, 'data changed'))
     }
 
-    submitResetPasswordForm = () => {
+    validateResetPasswordFrom=()=> 
+    {
+        let error = {};
+        let formIsValid = true;
+
+
+        if (this.state.password !== "undefined" || !this.state.password )
+        {
+    
+            var pattern = new RegExp(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/);
+    
+            if (!pattern.test(this.state.password)) 
+            {
+              formIsValid = false;
+              error["password"] = "*Please enter secure and strong password.";
+            }
+        }
+    
+        if(this.state.confirmPassword != this.state.password)
+        {
+            formIsValid = false;
+            error["confirmPassword"] ="Your passwords arent matching please try again..."
+        }
+
+        this.setState({
+            error: error
+          });
+
+          return formIsValid;
+    
+
+    }
+
+    submitResetPasswordForm = () => 
+    {
+        if(this.validateResetPasswordFrom())
+        {
      
             let userObject= {};
             userObject.email = this.state.email;
@@ -46,6 +83,7 @@ class ResetPassword extends Component {
                     console.log(Error, " fail");
                     alert(`Password didn't matched .. please try again.!!`);
                 });
+            }
         
     }
 
@@ -76,7 +114,7 @@ class ResetPassword extends Component {
                         variant="outlined"
                         name="password"
                         type={this.state.showPassword ? "text" : "password"}
-                        label="password"
+                        label="Password"
                         margin="dense"
                         onChange={this.handleChangeText}
 
@@ -94,6 +132,9 @@ class ResetPassword extends Component {
                                 </InputAdornment>
                             )
                         }}
+
+                        error={this.state.error.password}
+                        helperText={this.state.error.password}
                     />
                 </div>
 
@@ -107,7 +148,7 @@ class ResetPassword extends Component {
                         id="outlined-adornment-password"
                         variant="outlined"
                         type={this.state.showPassword ? "text" : "password"}
-                        label=" confirm "
+                        label=" Confirm Password"
                         value={this.state.confirmPassword}
                         onChange={this.handleChangeText}
 
@@ -125,13 +166,16 @@ class ResetPassword extends Component {
                                 </InputAdornment>
                             )
                         }}
+                        error={this.state.error.confirmPassword}
+                        helperText={this.state.error.confirmPassword}
                        
                        
                     />
                 </div>
 
                 <div className="buttons">
-                    <Button  variant="contained" color="secondary" onClick={this.submitResetPasswordForm}>
+                    <Button  variant="contained" color="secondary"
+                     onClick={this.submitResetPasswordForm}>
                                                                    
                 Submit
           </Button>

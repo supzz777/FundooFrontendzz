@@ -73,12 +73,19 @@ export default class Login extends Component {
             let userObject = {};
             userObject.email = this.state.email;
             userObject.password = this.state.password;
-            // let Token= localStorage.setItem("Token" ,Response.data.data);
+            //  let Token= localStorage.getItem("Token" ,Response.data.data);
             login(userObject)
                 .then(Response => {
                     console.log(Response , "Login success")
                     alert(`Login Successfull!!`);
+                                        
                     localStorage.setItem("Token" ,Response.data.data);
+                    localStorage.setItem("FirstName" ,Response.data.userFirstName);
+                    localStorage.setItem("LastName" ,Response.data.userLastName);
+                    localStorage.setItem("Email" ,Response.data.email);
+
+
+                    
                     this.props.history.push('/dashboard');
                     
 

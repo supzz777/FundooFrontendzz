@@ -6,14 +6,13 @@ import Typography from '@material-ui/core/Typography';
 import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import RefreshIcon from '@material-ui/icons/Refresh';
-import ViewStreamIcon from '@material-ui/icons/ViewStream';
-import SettingsIcon from '@material-ui/icons/Settings';
-import AppsIcon from '@material-ui/icons/Apps';
+import ViewAgendaOutlinedIcon from '@material-ui/icons/ViewAgendaOutlined';
+import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';import AppsIcon from '@material-ui/icons/Apps';
 import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField from '@material-ui/core/TextField';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import DrawerMenu from './DrawerMenu';
-
+import Profile from './Profile';
 
 class Dashboard extends Component {
 
@@ -54,7 +53,7 @@ class Dashboard extends Component {
 
                     <Typography className="keep">
 
-                        <span style={{ color: "#010815" }}> Keep </span>
+                        <span style={{ color: "#615c5c" }}> Keep </span>
 
                     </Typography>
 
@@ -97,25 +96,34 @@ class Dashboard extends Component {
                     </div>
 
                     <div className="refresh">
-                        <RefreshIcon />
+                        <RefreshIcon
+                        style={{color:'grey'}} />
                     </div>
 
                     <div className="viewList">
 
-                        <ViewStreamIcon />
+                        <ViewAgendaOutlinedIcon
+                        style={{color:'grey'}}  />
                     </div>
 
                     <div className="settingsIcon">
-                        <SettingsIcon />
+                        <SettingsOutlinedIcon 
+                        style={{color:'grey'}}  />
                     </div>
 
                     <div className="appsIcon">
-                        <AppsIcon />
+                        <AppsIcon 
+                        style={{color:'grey'}}  />
                     </div>
 
                     <div className="accountPic">
-                        <AccountCircleIcon fontSize="large" />
+                        <Profile
+                            // PropsDashboard={this.props}
+                            {...this.props}
+                       />
                     </div>
+
+                   
 
                 </div>
 

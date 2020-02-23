@@ -29,6 +29,8 @@ class Registration extends Component {
     }
 
     handleChangeText = (event) => {
+        console.log("Inside handle change");
+        
         this.setState({
             [event.target.name]: event.target.value
         })
@@ -163,6 +165,8 @@ class Registration extends Component {
 
     submitUserSignUpForm = () => 
     {
+        console.log("Inside submit");
+        
          if (this.validateForm()) {
             let user = {};
             user.firstName = this.state.firstName;
@@ -170,6 +174,7 @@ class Registration extends Component {
             user.email = this.state.email;
             user.phoneNumber = this.state.phoneNumber;
             user.password = this.state.password;
+            user.confirmPassword=this.state.confirmPassword
             console.log(user);
 
             registerUser(user)
@@ -180,9 +185,8 @@ class Registration extends Component {
             }).catch((err) => {
                 console.log("Error", err.response)
                 console.log(err.response.data.message, "User Registration failed");
-                alert(err.response.data.message);
-                console.log('errro msg : ',err.response.data);
-                
+                alert(err.response);
+                console.log('errro msg : ',err.response.data);   
             });
             }
 

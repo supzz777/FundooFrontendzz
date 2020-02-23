@@ -34,7 +34,7 @@
 
     height: 100%;
     width:5%;
-    background-color: violet;
+    /* background-color: violet; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -47,7 +47,7 @@
     height: 100%;
     width: 5%;
     /* margin-left: 1%; */
-    background-color: yellowgreen;
+    /* background-color: yellowgreen; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -58,7 +58,7 @@
     height: 100%;
     width: 7%;
     margin-left: 1%;
-    background-color: blueviolet;
+    /* background-color: blueviolet; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -98,7 +98,7 @@
     height: 100%;
     width: 4%;
     margin-left: 4%; 
-    background-color: yellowgreen;
+    /* background-color: yellowgreen; */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -108,7 +108,7 @@
 .viewList{
     height: 100%;
     width: 4%;
-    background-color: rgb(130, 50, 205);
+    /* background-color: rgb(130, 50, 205); */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -120,7 +120,7 @@
 
     height: 100%;
     width: 3%;
-    background-color: rgb(205, 50, 166);
+    /* background-color: rgb(205, 50, 166); */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -131,7 +131,7 @@
     
     height: 100%;
     width: 3%;
-    background-color: rgb(50, 205, 205);
+    /* background-color: rgb(50, 205, 205); */
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -142,7 +142,7 @@
 .accountPic{
     height: 100%;
     width: 5%;
-    background-color: rgb(50, 205, 50);
+    /* background-color: rgb(50, 205, 50); */
     display: flex;
     flex-direction: column;
     justify-content: center;

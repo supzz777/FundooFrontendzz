@@ -15,8 +15,8 @@ class ResetPassword extends Component {
 
         this.state = {
             showPassword: false,
-            password: "",
-            confirmPassword: "",
+            password:"",
+            confirmPassword:"",
             error:{},
                        
         };
@@ -35,23 +35,30 @@ class ResetPassword extends Component {
         let formIsValid = true;
 
 
-        if (this.state.password !== "undefined" || !this.state.password )
-        {
-    
+        
             var pattern = new RegExp(/^.*(?=.{8,})(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%&]).*$/);
     
-            if (!pattern.test(this.state.password)) 
+            if (!pattern.test(this.state.password )) 
             {
               formIsValid = false;
               error["password"] = "*Please enter secure and strong password.";
             }
-        }
+        
     
-        if(this.state.confirmPassword != this.state.password)
+        if( !this.state.confirmPassword === this.state.password ) 
         {
             formIsValid = false;
             error["confirmPassword"] ="Your passwords arent matching please try again..."
         }
+
+        // if(!this.state.password || this.state.password != this.state.confirmPassword)
+        //  {
+            
+        //     formIsValid = false;
+        //     error["confirmPassword"] ="Your passwords arent matching please try again..."
+        
+        // }
+        
 
         this.setState({
             error: error
@@ -70,20 +77,23 @@ class ResetPassword extends Component {
             let userObject= {};
             userObject.email = this.state.email;
             userObject.password = this.state.password ;
-            userObject.confirmPassword = this.state.confirmpassword ;
+            userObject.confirmPassword = this.state.confirmPassword ;
            
             setPassword(userObject)
                 .then(Response => {
 
                     console.log(Response , " success")
-                    alert(`Your Password has Successfully Changed !!`);
+                    alert("hey in alert",`Your Password has Successfully Changed !!`);
 
                 })
                 .catch(Error => {
-                    console.log(Error, " fail");
-                    alert(`Password didn't matched .. please try again.!!`);
+                    console.log(Response, " fail");
+                    alert("hey in catch alert",`Password didn't matched .. please try again.!!`);
                 });
-            }
+
+
+              
+               }
         
     }
 
@@ -149,7 +159,6 @@ class ResetPassword extends Component {
                         variant="outlined"
                         type={this.state.showPassword ? "text" : "password"}
                         label=" Confirm Password"
-                        value={this.state.confirmPassword}
                         onChange={this.handleChangeText}
 
                          InputProps={{

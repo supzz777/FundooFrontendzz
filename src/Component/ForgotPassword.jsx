@@ -5,7 +5,8 @@ import Button from '@material-ui/core/Button';
 import {forgetPassword} from '../Service/axios';
 
 
-class ForgotPassword extends Component {
+class ForgotPassword extends Component
+{
 
     constructor(props) {
         super(props);
@@ -29,23 +30,29 @@ class ForgotPassword extends Component {
     {
 
         let error = {};
-        let formIsValid = true;
-  
+        let formIsValid =true;
 
-        if ( this.state.email !== "undefined" || !this.state.email )
+          if ( this.state.email !== "undefined" || !this.state.email )
         {
             //regular expression for email validation
-            var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+            var pattern = new RegExp("^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\. [A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$");
             if (!pattern.test(this.state.email)) 
             {
               formIsValid = false;
               error["email"] = "*Please enter a valid email-ID.";
+                
             }
         }
 
+        this.setState({
+            error: error
+          });
+        return formIsValid;
+
     }
 
-    submitForgetPasswordForm = () => {
+    submitForgetPasswordForm = () =>
+     {
         if(this.validateForgotPasswordFrom())
         {
             let userObject = {};
@@ -55,19 +62,19 @@ class ForgotPassword extends Component {
                 .then(Response => {
 
                     console.log(Response , " success")
-                    alert(`Link Successfully sent to your Email !!`);
+                    alert( " this .alert",`Link Successfully sent to your Email !!`);
 
                 })
                 .catch(Error => {
                     console.log(Error, " fail");
-                    alert(`Please Try Again !!`);
+                    alert( "this.alert.2"`Please Try Again !!`);
                 });
-            }
-        
+           
+                   
+           }
+     
+       
     }
-
-
-
 
     render() {
         return (
@@ -103,13 +110,16 @@ class ForgotPassword extends Component {
                     />
                 </div>
                 <div className="forgotbutton">
+
                     <Button variant="contained" color="secondary"
-                     onClick={this.submitForgetPasswordForm}>
+                     onClick={this.submitForgetPasswordForm} >
                         Submit
                     </Button>
+
                     <Button variant="contained" color="secondary" >
                         Cancel
                   </Button>
+                  
                 </div>
             
                 

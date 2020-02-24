@@ -9,7 +9,8 @@ import DrawerMenu from '../Component/DrawerMenu';
 import Profile from '../Component/Profile';
 import TakeANote from '../Component/TakeANote'
 import TakeAFullNote from '../Component/TakeAFullNote'
-import NotePage from '../Component/NotePage'
+import NoteContainer from '../Component/NoteContainer'
+import NoteDialogue from '../Component/NoteDialogue'
 
 const Router =() => {
     
@@ -22,11 +23,21 @@ const Router =() => {
             <Route  path='/forgotpassword'  component={ForgotPassword}/>
             <Route  path='/resetpassword'  component={ResetPassword}/>
             <Route  path='/home'  component={Dashboard}/>
-            <Route  path='/home/notes'  component={NotePage}/>
+            <Route  path='/home/notes'  component={NoteContainer}/>
+            {/* <Route  path='/notes'  component={NoteContainer}/> */}
+
             <Route path='/drawer' component={DrawerMenu}/>
-            {/* <Route path='/profile' component={Profile}/> */}
-            {/* <Route path='/takenote' component={TakeANote}/> */}
-            {/* <Route path='/takefullnote' component={TakeAFullNote}/> */}
+            <Route path='/notecard' component={NoteDialogue}/>
+
+
+
+
+
+
+                {/* these routing paths to be commented later... */}
+            <Route path='/profile' component={Profile}/>
+            <Route path='/takenote' component={TakeANote}/>
+            <Route path='/takefullnote' component={TakeAFullNote}/>
 
             </BrowserRouter>
         );

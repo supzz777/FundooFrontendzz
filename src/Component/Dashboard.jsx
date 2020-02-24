@@ -7,12 +7,20 @@ import InputBase from '@material-ui/core/InputBase';
 import SearchIcon from '@material-ui/icons/Search';
 import RefreshIcon from '@material-ui/icons/Refresh';
 import ViewAgendaOutlinedIcon from '@material-ui/icons/ViewAgendaOutlined';
-import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';import AppsIcon from '@material-ui/icons/Apps';
+import SettingsOutlinedIcon from '@material-ui/icons/SettingsOutlined';
+import AppsIcon from '@material-ui/icons/Apps';
 import InputAdornment from "@material-ui/core/InputAdornment";
 import TextField from '@material-ui/core/TextField';
 import AccountCircleIcon from '@material-ui/icons/AccountCircle';
 import DrawerMenu from './DrawerMenu';
 import Profile from './Profile';
+import { fade ,makeStyles } from '@material-ui/core/styles';
+
+
+
+
+
+
 
 class Dashboard extends Component {
 
@@ -30,10 +38,15 @@ class Dashboard extends Component {
         })
     }
 
+    
 
     render() {
+       
         return (
-            <div className="dashBoardPage">
+          
+
+
+            <div className="dashBoardPage" style={{ height: 65}}>
 
                 <div className="navBar">
 
@@ -51,46 +64,41 @@ class Dashboard extends Component {
 
                     </div>
 
-                    <Typography className="keep">
+                    <div className="keep">
 
-                        <span style={{ color: "#615c5c" }}> Keep </span>
+                       Keep
 
-                    </Typography>
+                    </div>
 
                     <div className="searchBarPlace">
-                        {/* <div className= "searchIcon">
-                        <SearchIcon />
-                        </div> */}
+                       
+                        <div className="searchIcon">
+                        <SearchIcon style={{ padding: 1 ,display: 'flex' ,justifyContent: 'flexStart',marginTop:'11%' ,marginLeft:'152%'}}  />
+                        </div>
 
-                        {/* <InputBase type="text" id="filter" 
-                        placeholder="Search..." 
-                        onChange={this.handleInputChange}
-                        inputProps={{ 'aria-label': 'search' }}
-                        />
-                         */}
-
-                        {/* <form>
-                            <input
-                            type="text"
-                            placeholder= <SearchIcon />
-                            value={this.props.filterText}
-                            ref="filterTextInput"
-                            onChange={this.handleChange}
-                            />
-                         
-                         </form> */}
-
-                        {/* <Icon style={styles.searchIcon} name="ios-search" size={20} color="#000"/> */}
-
-
-                        <SearchIcon style={{ padding: 1 }} />
-
+                    <div className="searchBox">
                         <TextField
-                            placeholder="search"
+                            placeholder="Search"
                             onChangeText={(searchString) => { this.setState({ searchString }) }}
                             underlineColorAndroid="transparent"
                             InputProps={{ disableUnderline: true }}
+                            style={{marginLeft:'25%'}}
                         />
+                    </div>
+
+                                {/* <div className={this.classes.search}>
+                                <div className={this.classes.searchIcon}>
+                                <SearchIcon />
+                                </div>
+                                <InputBase
+                                placeholder="Search…"
+                                // classes={{
+                                //     root: this.classes.inputRoot,
+                                //     input: this.classes.inputInput,
+                                // }}
+                                inputProps={{ 'aria-label': 'search' }}
+                                />
+                            </div> */}
 
 
                     </div>

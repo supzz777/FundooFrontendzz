@@ -19,12 +19,11 @@ const useStyles = makeStyles(theme =>
     root: {
       padding: '2px 4px',
       display: 'flex',
-      alignItems: 'center',
+      alignItems: 'center',     
       width: 600,
       position:"relative",
       display:'flex',
       
-     
       boxShadow: '0px 0px 0px 2px rgba(0,0,0,0.30), 0 2px 5px rgba(0,0,0,0.22) ',
     },
     input: {
@@ -42,7 +41,7 @@ const useStyles = makeStyles(theme =>
   }),
 );
 
-export default function TakeANote() {
+export default function TakeANote(props) {
     const classes = useStyles();
   
     return (
@@ -52,6 +51,7 @@ export default function TakeANote() {
           className={classes.input}
           placeholder="Take a Note..."
           inputProps={{ 'aria-label': 'search google maps' }}
+          onClick={props.handleClick}
         />
         <IconButton type="submit" className={classes.iconButton} aria-label="new list">
           <LibraryAddCheckOutlinedIcon />

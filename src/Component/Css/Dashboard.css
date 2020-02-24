@@ -63,6 +63,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-size: 150%;
+    color: "#615c5c";
+
 
 }
 .searchBarPlace{
@@ -72,25 +75,26 @@
     background-color: transparent;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    /* justify-content: space-around; */
     align-items: center;
     margin-left: 5%;
     position: 'relative';
-    background-color: 'fade(theme.palette.common.white, 0.15)';
-    border-radius: 5%;
+    background-color: #e4e4e4;
+   
     
 }
 
-.searchIcon {
+
+.searchBox {
     /* height: '100%';
     position: 'abslute';
     /* pointerEvents: 'none'; */
     display: 'flex';
-    justify-content: flex-start;
+   
     /* alignItems: 'center'; */
     /* justifyContent: 'center'; */
-    background-color: black;
-    margin-top: 30%; 
+   width: '88%';
+   height: '100%';
 
   }
 
@@ -142,12 +146,12 @@
 .accountPic{
     height: 100%;
     width: 5%;
-    /* background-color: rgb(50, 205, 50); */
+      /* background-color: rgb(50, 205, 50); */
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    margin-left: 1%;
+    margin-left: 5%;
 
 }
 
